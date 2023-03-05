@@ -3,6 +3,16 @@
 provider "aws" {
   region = "ap-south-1"
 }
+
+# store the terraform state file in s3
+terraform {
+  backend "s3" {
+    bucket  = "testdddproject"
+    key     = "build/terraform.tfstate"
+    region  = "ap-south-1"
+  }
+}
+
 # create default vpc if one does not exit
 resource "aws_default_vpc" "default_vpc" {
 
